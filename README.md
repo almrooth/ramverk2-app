@@ -1,8 +1,13 @@
 # Chat application for the course "ramverk2" at BTH
 
 * Circle CI
+[![CircleCI](https://circleci.com/gh/almrooth/ramverk2-app.svg?style=svg)](https://circleci.com/gh/almrooth/ramverk2-app)
+
 
 * Scrutinizer
+[![Build Status](https://scrutinizer-ci.com/g/almrooth/ramverk2-app/badges/build.png?b=master)](https://scrutinizer-ci.com/g/almrooth/ramverk2-app/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/almrooth/ramverk2-app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/almrooth/ramverk2-app/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/almrooth/ramverk2-app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/almrooth/ramverk2-app/?branch=master)
 
 ## Tech Stack
 * Express.js server / REST API
