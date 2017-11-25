@@ -1,0 +1,62 @@
+version: "3"
+services:
+
+  node9:
+    image: node:9
+    working_dir: /home/node/app
+    # environment:
+      # - NODE_ENV=production
+    ports:
+      - "8089:1337"
+    volumes:
+      - ./:/home/node/app/
+    command: "npm start"
+
+  node8:
+    image: node:8
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "8088:1337"
+    volumes:
+      - ./:/home/node/app/
+    command: "npm start"
+    
+  node7:
+    image: node:7
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "8087:1337"
+    volumes:
+      - ./:/home/node/app/
+    command: "npm start"
+
+  node-alpine-latest-test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-alpine
+    volumes:
+      - ./:/home/node/app/
+      - /home/node/app/node_modules/
+    command: "npm test"
+
+  node-alpine-8-test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-alpine-8
+    volumes:
+      - ./:/home/node/app/
+      - /home/node/app/node_modules/
+    command: "npm test"
+
+  node-alpine-7-test:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile-node-alpine-7
+    volumes:
+      - ./:/home/node/app/
+      - /home/node/app/node_modules/
+    command: "npm test"
