@@ -1,6 +1,6 @@
 {
     "name": "ramverk2-app",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A chat application",
     "main": "app.js",
     "scripts": {
