@@ -1,0 +1,32 @@
+<section class="section">
+    <div class="container">
+            <h1 class="title">{{obs.date}} - {{ obs.bird }}</h1>
+            <h2 class="subtitle">av {{ obs.user.name }}</h2>
+
+            {{#if locals.message}}
+                <article class="message is-primary is-small">
+                    <div class="message-body">
+                        {{#each locals.message}}
+                            <p>{{this}}</p>
+                        {{/each}}
+                    </div>
+                </article>
+            {{/if}}
+
+            <div class="box">
+                <div class="columns">
+                    <div class="column">
+                        <p class="mb-1"><strong>Fågel: </strong>{{obs.bird}}</p>
+                        <p class="mb-1"><strong>Plats: </strong>{{obs.location}}</p>
+                        <p class="mb-1"><strong>Text: </strong></p>
+                        <div class="content">{{obs.text}}</div>
+                    </div>
+                    <div class="column">
+                        <img class="obs-img" src="{{obs.image}}" alt="Plats för bild på {{obs.bird}}">
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+</section>

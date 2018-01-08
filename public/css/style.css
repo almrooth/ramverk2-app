@@ -1,5 +1,23 @@
-* {
-    box-sizing: border-box;
+.mb-1 {
+    margin-bottom: 1em;
+}
+
+.mb-2 {
+    margin-bottom: 2em;
+}
+
+.mr-1 {
+    margin-right: 1em;
+}
+
+/* Navbar */
+.navbar-burger {
+    border: none;
+}
+
+/* Observations */
+.display-none {
+    display: none;
 }
 
 /* Chat */
@@ -9,4 +27,9 @@
 
 .signed-in {
     display: none;
+}
+
+.obs-img {
+    max-width: 300px;
+    max-height: 300px;
 }

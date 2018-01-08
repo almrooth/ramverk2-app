@@ -1,0 +1,46 @@
+    <section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title">Redigera observation</h1>
+
+                {{#if errors}}
+                    <article class="message is-danger is-small">
+                        <div class="message-body">
+                            {{#each errors}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                <form method="POST">
+                    <div class="field">
+                        <label for="bird" class="label">Fågel</label>
+                        <input type="text" name="bird" id="bird" class="input" value="{{obs.bird}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="date" class="label">Datum</label>
+                        <input type="date" name="date" id="date" class="input" value="{{obs.date}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="location" class="label">Plats</label>
+                        <input type="text" name="location" id="location" class="input" value="{{obs.location}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="text" class="label">Beskrivning</label>
+                        <textarea name="text" id="text" cols="30" rows="10" class="textarea">{{obs.text}}</textarea>
+                    </div>
+                    <div class="field">
+                        <label for="image" class="label">Bildlänk</label>
+                        <input type="text" name="image" id="image" class="input" value="{{obs.image}}" >
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-info">Posta</button>
+                        <button type="submit" class="button is-light">Nollställ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

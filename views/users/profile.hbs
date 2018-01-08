@@ -1,0 +1,41 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+
+                <h1 class="title">{{ user.name }}</h1>
+                <h2 class="subtitle">@ {{ user.username }}</h2>
+
+                {{#if locals.message}}
+                    <article class="message is-primary is-small">
+                        <div class="message-body">
+                            {{#each locals.message}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                <div class="box">
+                    <aritcle class="media">
+                        <div class="media-left">
+                            <figure class="image is-128x128">
+                                <img src="{{ user.image }}" alt="Profilbild">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p><strong>Användarnamn: </strong>{{ user.username }}</p>
+                                <p><strong>Namn: </strong>{{ user.name }}</p>
+                                <p><strong>Roll: </strong>{{ user.role }}</p>
+                                <p><a href="mailto:{{ user.email }}">{{user.email}}</a></p>
+                            </div>
+                        </div>
+                    </aritcle>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

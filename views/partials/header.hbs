@@ -1,0 +1,46 @@
+<header>
+    <nav class="navbar has-shadow is-info">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item is-size-5">Fågelrapporten</a>
+
+            <button class="button navbar-burger is-info" id="navBurger" data-target="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+                <a href="/" class="navbar-item">Hem</a>
+                <a href="/observations" class="navbar-item">Observationer</a>
+                <a href="/chat" class="navbar-item">Diskussion</a>
+                <a href="/about" class="navbar-item">Om oss</a>
+            </div>
+
+            <div class="navbar-end">
+                {{#if locals.user}}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a href="" class="navbar-link">Inloggad som {{locals.user.name}}</a>
+
+                        <div class="navbar-dropdown">
+                            <a href="/users/profile/{{locals.user._id}}" class="navbar-item">Min profil</a>
+                            <a href="/users/edit/{{locals.user._id}}" class="navbar-item">Redigera profil</a>
+                            <a href="/users/pwd/{{locals.user._id}}" class="navbar-item">Byt lösenord</a>
+                            {{#if locals.user.isAdmin}}
+                                <hr class="navbar-divider">
+                                <a href="/users" class="navbar-item">Användare</a>
+                                <a href="/observations/overview" class="navbar-item">Observationer</a>
+                            {{/if}}
+                            <hr class="navbar-divider">
+                            <a href="/auth/logout" class="navbar-item">Logga ut</a>
+                        </div>
+                    </div>
+                {{else}}
+                    <a href="/auth/login" class="navbar-item">Logga in</a>
+                    <a href="/auth/register" class="navbar-item">Registrera</a>
+                {{/if}}
+            </div>
+        </div>
+    </nav>
+</header>

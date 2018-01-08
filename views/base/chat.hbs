@@ -1,0 +1,47 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8 is-offset-2">
+                <h1 class="title">Fågelsnack</h1>
+
+                <div class="chat">
+                    <div id="sign-in" class="field is-grouped sign-in">
+                        <div class="control is-expanded">
+                            <input id="username" type="text" class="input" placeholder="Välj användarnamn" value="{{username}}">
+                            <p class="help is-danger">Välj användarnamn</p>
+                        </div>
+                        <div class="control">
+                            <button id="connect" class="button is-info">Anslut</button>
+                        </div>
+                    </div>
+
+                    <div id="signed-in" class="signed-in">
+                        {{!-- <div class="field is-grouped">
+                            <div class="control">
+                                <button id="connect" class="button is-primary">Connect</button>
+                            </div>
+                            <div class="control">
+                                <button id="disconnect" class="button is-primary">Close connection</button>
+                            </div>
+                        </div> --}}
+
+                        <div id="output" class="box"></div>
+
+                        <div class="field is-grouped">
+                            <div class="control is-expanded">
+                                <input id="message" type="text" class="input" placeholder="Meddelande">
+                            </div>
+                            <div class="control">
+                                <button id="send_message" class="button is-info">Skicka</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>let port = {{port}};</script>
+<script src="/js/client.js"></script>

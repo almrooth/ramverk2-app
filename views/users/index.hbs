@@ -1,0 +1,46 @@
+<section class="section">
+    <div class="container">
+        <h1 class="title">Användare</h1>
+
+        {{#if locals.message}}
+            <article class="message is-small is-primary">
+                <div class="message-body">
+                    {{#each message}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            </article>
+        {{/if}}
+
+        <a href="/users/create" class="button is-info mb-2">Ny användare</a>
+
+        <table class="table is-striped is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Användarnamn</th>
+                    <th>Namn</th>
+                    <th>E-post</th>
+                    <th>Roll</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                    <tr>
+                        <td><a href="/users/profile/{{this._id}}">{{this.username}}</a></td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.role}}</td>
+                        <td>
+                            <div class="table-control">
+                                <span class="mr-1 icon"><a href="/users/edit/{{this._id}}" class="has-text-info"><i class="fa fa-pencil"></i></a></span>
+                                <span class="icon"><a href="/users/delete/{{this._id}}" class="has-text-danger"><i class="fa fa-trash"></i></a></span>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</section>

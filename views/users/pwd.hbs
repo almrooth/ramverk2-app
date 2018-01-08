@@ -1,0 +1,48 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title">Byt lösenord</h1>
+
+                {{#if errors}}
+                    <article class="message is-danger is-small">
+                        <div class="message-body">
+                            {{#each errors}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                {{#if message}}
+                    <article class="message is-primary is-small">
+                        <div class="message-body">
+                            {{#each message}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                <form method="POST">
+                    <div class="field">
+                        <label for="username" class="label">Användarnamn</label>
+                        <input type="text" name="username" id="username" class="input" value="{{user.username}}" readonly>
+                    </div>
+                    <div class="field">
+                        <label for="password" class="label">Lösenord</label>
+                        <input type="password" name="password" id="password" class="input" required>
+                    </div>
+                    <div class="field">
+                        <label for="password2" class="label">Bekräfta lösenord</label>
+                        <input type="password" name="password2" id="password2" class="input" required>
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-info">Spara</button>
+                        <button type="submit" class="button is-light">Nollställ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,80 @@
+<section class="section">
+    <div class="container">
+        <h1 class="title">Observationer</h1>
+
+        {{#if locals.message}}
+            <article class="message is-small is-primary">
+                <div class="message-body">
+                    {{#each message}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            </article>
+        {{/if}}
+
+        <a href="/observations/create" class="button is-info mb-2">Ny observation</a>
+
+
+        {{#each observations}}
+            <div class="card mb-1">
+                <header class="card-header">
+                    <div class="card-header-title">
+                        <a href="/observations/show/{{this._id}}">{{this.date}} - {{this.bird}}</a>{{this.koko}}
+                    </div>
+                    <a href="#" class="card-header-icon obs-toggle" aria-label="more options" data-target="{{this._id}}">
+                        <span class="icon">
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="display-none" id="{{this._id}}">
+                    <div class="card-content" id="{{this._id}}">
+                        <div class="columns">
+                            <div class="column">
+                                <p class="mb-1"><strong>Fågel: </strong>{{this.bird}}</p>
+                                <p class="mb-1"><strong>Plats: </strong>{{this.location}}</p>
+                            </div>
+                            <div class="column">
+                                <figure class="image is-128x128">
+                                    <img src="{{ this.image }}" alt="">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <div class="card-footer-item">
+                            <a href="/users/profile/{{this.user._id}}">av {{this.user.name}}</a>
+                        </div>
+                        {{#if this.isOwner}}
+
+                            <div class="card-footer-item">
+                                <a href="/observations/edit/{{this._id}}">Edit</a>
+                            </div>
+                            <div class="card-footer-item">
+                                <a href="/observations/delete/{{this._id}}">Delete</a>
+                            </div>
+                        {{/if}}
+                    </footer>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</section>
+
+<script>
+    let observations = document.querySelectorAll('.obs-toggle');
+    for (let obs of observations) {
+        obs.addEventListener('click', function () {
+            let targetId = obs.dataset.target;
+            let target = document.getElementById(targetId);
+
+            if (!target.classList.contains('display-none')) {
+                target.classList.toggle('display-none');
+                obs.innerHTML = '<span class="icon"><i class="fa fa-angle-down" aria-hidden="true"></i></span>';
+            } else {
+                target.classList.toggle('display-none');
+                obs.innerHTML = '<span class="icon"><i class="fa fa-angle-up" aria-hidden="true"></i></span>';
+            }
+        })
+    }
+</script>

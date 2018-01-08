@@ -3,13 +3,28 @@
     "version": "0.1.1",
     "description": "A chat application",
     "main": "app.js",
+    "jest": {
+        "collectCoverage": true,
+        "coverageReporters": [
+            "json",
+            "lcov",
+            "text",
+            "clover"
+        ],
+        "coverageDirectory": "coverage",
+        "collectCoverageFrom": [
+            "routes/*.js",
+            "src/*.js"
+        ]
+    },
     "scripts": {
+        "build": "node seeders/userSeeder",
         "start": "node ./bin/www",
         "eslint": "eslint .",
         "stylelint": "stylelint **/*.css",
-        "test": "nyc mocha test/**/*.js",
+        "test": "jest --forceExit",
+        "test-watch": "jest --watch",
         "posttest": "npm run eslint && npm run stylelint",
-        "test-scrutinizer": "nyc -all --reporter=clover mocha test/**/*.js",
         "test1": "docker-compose run node-alpine-latest-test",
         "test2": "docker-compose run node-alpine-8-test",
         "test3": "docker-compose run node-alpine-7-test"
@@ -25,20 +40,25 @@
     },
     "homepage": "https://github.com/almrooth/ramverk2-app#readme",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "body-parser": "~1.18.2",
+        "connect-flash": "^0.1.1",
         "cookie-parser": "~1.4.3",
         "debug": "~2.6.9",
         "express": "~4.15.5",
         "express-handlebars": "^3.0.0",
+        "express-session": "^1.15.6",
+        "express-validator": "^4.3.0",
+        "mongo-crud-simple": "^1.0.1",
         "morgan": "~1.9.0",
-        "serve-favicon": "~2.4.5"
+        "serve-favicon": "~2.4.5",
+        "ws": "^3.3.3"
     },
     "devDependencies": {
         "eslint": "^4.11.0",
         "eslint-plugin-react": "^7.5.1",
         "javascript-style-guide": "^0.9.10",
-        "mocha": "^4.0.1",
-        "nyc": "^11.3.0",
+        "jest": "^22.0.4",
         "stylelint": "^8.2.0",
         "supertest": "^3.0.0"
     }

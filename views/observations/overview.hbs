@@ -1,0 +1,44 @@
+<section class="section">
+    <div class="container">
+        <h1 class="title">Observationer</h1>
+
+        {{#if locals.message}}
+            <article class="message is-small is-primary">
+                <div class="message-body">
+                    {{#each message}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            </article>
+        {{/if}}
+
+        <table class="table is-striped is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Fågel</th>
+                    <th>Plats</th>
+                    <th>Användare</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each obs}}
+                    <tr>
+                        <td><a href="/observations/show/{{this._id}}">{{this.date}}</a></td>
+                        <td>{{this.bird}}</td>
+                        <td>{{this.location}}</td>
+                        <td>{{this.user.username}}</td>
+                        <td>
+                            <div class="table-control">
+                                <span class="mr-1 icon"><a href="/observations/edit/{{this._id}}" class="has-text-info"><i class="fa fa-pencil"></i></a></span>
+                                <span class="icon"><a href="/observations/delete/{{this._id}}" class="has-text-danger"><i class="fa fa-trash"></i></a></span>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</section>

@@ -3,7 +3,9 @@
 
     let websocket;
     let username    = document.getElementById('username');
-    let url         = 'ws://localhost:1337/';
+    /* eslint-disable */
+    let url         = 'ws://localhost:'+ port +'/';
+    /* eslint-enable */
     let protocol    = 'json';
     let connect     = document.getElementById('connect');
     let sendMessage = document.getElementById('send_message');
@@ -12,7 +14,6 @@
     let output      = document.getElementById('output');
     let signIn     = document.getElementById('sign-in');
     let signedIn     = document.getElementById('signed-in');
-
 
     /**
      * Log output to browser

@@ -1,0 +1,62 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title">Redigera användare</h1>
+
+                {{#if errors}}
+                    <article class="message is-danger is-small">
+                        <div class="message-body">
+                            {{#each errors}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                <a href="/users/pwd/{{user._id}}" class="button is-info mb-2">Byt lösenord</a>
+
+                <form method="POST">
+                    {{#if locals.user.isAdmin}}
+                        <div class="field">
+                            <label for="role" class="label">Roll</label>
+                            <div class="select">
+                                <select name="role" id="role">
+                                    {{#if role}}
+                                        <option value="user" selected>user</option>
+                                        <option value="admin">admin</option>
+                                    {{else}}
+                                        <option value="user">user</option>
+                                        <option value="admin" selected>admin</option>
+                                    {{/if}}
+                                </select>
+                            </div>
+                        </div>
+                    {{else}}
+                        <input type="hidden" name="role" id="role" value="{{user.role}}">
+                    {{/if}}
+                    <div class="field">
+                        <label for="username" class="label">Användarnamn</label>
+                        <input type="text" name="username" id="username" class="input" value="{{user.username}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="name" class="label">Namn</label>
+                        <input type="text" name="name" id="name" class="input" value="{{user.name}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="email" class="label">E-post</label>
+                        <input type="text" name="email" id="email" class="input" value="{{user.email}}" required>
+                    </div>
+                    <div class="field">
+                        <label for="image" class="label">Profilbild (länk)</label>
+                        <input type="text" name="image" id="image" class="input">
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-info">Spara</button>
+                        <button type="submit" class="button is-light">Nollställ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

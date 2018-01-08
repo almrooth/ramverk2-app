@@ -1,0 +1,43 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-6 is-offset-3">
+                <h1 class="title">Logga in</h1>
+
+                {{#if locals.message}}
+                    <article class="message is-small is-primary">
+                        <div class="message-body">
+                            {{#each message}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                {{#if locals.errors}}
+                    <article class="message is-danger is-small">
+                        <div class="message-body">
+                            {{#each errors}}
+                                <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                    </article>
+                {{/if}}
+
+                <form method="POST">
+                    <div class="field">
+                        <label for="username" class="label">Användarnamn</label>
+                        <input type="text" name="username" id="username" class="input" required>
+                    </div>
+                    <div class="field">
+                        <label for="password" class="label">Lösenord</label>
+                        <input type="password" name="password" id="password" class="input" required>
+                    </div>
+                    <div class="control">
+                        <button type="submit" class="button is-info">Logga in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
