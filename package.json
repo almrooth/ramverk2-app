@@ -18,16 +18,18 @@
         ]
     },
     "scripts": {
-        "build": "node seeders/userSeeder",
+        "seed": "node seeders/userSeeder",
         "start": "node ./bin/www",
         "eslint": "eslint .",
         "stylelint": "stylelint **/*.css",
         "test": "jest --forceExit",
         "test-watch": "jest --watch",
         "posttest": "npm run eslint && npm run stylelint",
-        "test1": "docker-compose run node-alpine-latest-test",
-        "test2": "docker-compose run node-alpine-8-test",
-        "test3": "docker-compose run node-alpine-7-test"
+        "start-docker": "docker-compose up -d express",
+        "stop-docker": "docker-compose stop",
+        "test-docker": "docker-compose run node-alpine-latest-test",
+        "test-docker1": "docker-compose run node-alpine-8-test",
+        "test-docker2": "docker-compose run node-alpine-7-test"
     },
     "repository": {
         "type": "git",

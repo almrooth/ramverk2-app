@@ -1,62 +1,67 @@
 version: "3"
 services:
 
-  node9:
-    image: node:9
-    working_dir: /home/node/app
-    # environment:
-      # - NODE_ENV=production
-    ports:
-      - "8089:1337"
+  express:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-express
+    environment:
+      - DBWEBB_DSN=mongodb://mongodb:27017/ramverk2
+      - DBWEBB_PORT=1338
     volumes:
-      - ./:/home/node/app/
+      - ./:/app/
+      - /app/node_modules/
+    ports:
+      - 1338:1338
+    links:
+      - mongodb
     command: "npm start"
 
-  node8:
-    image: node:8
-    working_dir: /home/node/app
+  mongodb:
+    image: mongo
     environment:
-      - NODE_ENV=production
-    ports:
-      - "8088:1337"
+      - MONGO_DATA_DIR=/data/db
     volumes:
-      - ./:/home/node/app/
-    command: "npm start"
-    
-  node7:
-    image: node:7
-    working_dir: /home/node/app
-    environment:
-      - NODE_ENV=production
+      - ./data/db:/data/db
     ports:
-      - "8087:1337"
-    volumes:
-      - ./:/home/node/app/
-    command: "npm start"
+      - 27017:27017
+    command: mongod --bind_ip_all
 
   node-alpine-latest-test:
     build:
       context: .
-      dockerfile: docker/Dockerfile-node-alpine
+      dockerfile: ./docker/Dockerfile-node-alpine
+    environment:
+      - DBWEBB_DSN=mongodb://mongodb:27017/ramverk2
     volumes:
-      - ./:/home/node/app/
-      - /home/node/app/node_modules/
+      - ./:/app/
+      - /app/node_modules/
+    links:
+      - mongodb
     command: "npm test"
 
   node-alpine-8-test:
     build:
       context: .
-      dockerfile: docker/Dockerfile-node-alpine-8
+      dockerfile: ./docker/Dockerfile-node-alpine-8
+    environment:
+      - DBWEBB_DSN=mongodb://mongodb:27017/ramverk2
     volumes:
-      - ./:/home/node/app/
-      - /home/node/app/node_modules/
+      - ./:/app/
+      - /app/node_modules/
+    links:
+      - mongodb
     command: "npm test"
 
   node-alpine-7-test:
     build:
       context: .
-      dockerfile: docker/Dockerfile-node-alpine-7
+      dockerfile: ./docker/Dockerfile-node-alpine-7
+    environment:
+      - DBWEBB_DSN=mongodb://mongodb:27017/ramverk2
     volumes:
-      - ./:/home/node/app/
-      - /home/node/app/node_modules/
+      - ./:/app/
+      - /app/node_modules/
+    links:
+      - mongodb
     command: "npm test"

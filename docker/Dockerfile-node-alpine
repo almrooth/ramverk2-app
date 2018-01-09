@@ -1,9 +1,10 @@
+# Base image
 FROM node:alpine
 
-RUN mkdir -p /home/node/app
-WORKDIR /home/node/app
+# Create workdir
+RUN mkdir -p /app
+WORKDIR /app
 
-COPY package.json .
+# Install npm packages
+COPY package.json /app
 RUN npm install
-
-EXPOSE 3000
